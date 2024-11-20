@@ -2,6 +2,8 @@ import express from 'express'
 import sequelize from './shared/db/dbConnection';
 import { UserRoutes } from './users/userRoute';
 import dotenv from 'dotenv'
+import { UserRoleRoutes } from './roles/userRoleRoute';
+import { TransactionRoutes } from './transactions/transactionRoute';
 
 dotenv.config()
 
@@ -11,7 +13,12 @@ const app = express();
 
 app.use(express.json());
 
+
 app.use('/pagos', UserRoutes);
+app.use ('/pagos', UserRoleRoutes);
+app.use ('/pagos', TransactionRoutes)
+
+
 
 
 
@@ -32,4 +39,4 @@ const main = async () => {
       }
 }
 
-main();
+main(); 

@@ -1,5 +1,6 @@
 import UserModel from '../users/userModel';
-import { UserRoleModel } from '../roles/userRoleModel';
+import UserRoleModel  from '../roles/userRoleModel';
+import TransactionModel from '../transactions/transactionModel';
 
 
-export const models = [UserModel, UserRoleModel];
+export const models = [UserModel, UserRoleModel, TransactionModel];

@@ -1,5 +1,5 @@
 import { UserRole, UserRoleCreation, IUserRoleRepository } from './userRoleInterfacesTypes';
-import { UserRoleModel } from './userRoleModel';
+import UserRoleModel from './userRoleModel';
 
 export default class UserRoleRepository implements IUserRoleRepository {
 

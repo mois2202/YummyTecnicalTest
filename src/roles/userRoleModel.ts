@@ -13,7 +13,7 @@ import {
     tableName: 'user_roles', 
     timestamps: false,      
   })
-  export class UserRoleModel extends Model {
+  export default class UserRoleModel extends Model {
     @PrimaryKey
     @AutoIncrement
     @Column(DataType.INTEGER)

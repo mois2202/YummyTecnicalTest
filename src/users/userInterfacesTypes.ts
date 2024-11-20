@@ -1,30 +1,31 @@
 import UserModel from './userModel'
 import { UserRoleId } from '../roles/userRoleInterfacesTypes';
-// Interfaz completa para manejo interno de la aplicacion
-export interface User {
-  id?: number;
+import Decimal from 'decimal.js';
+import { Transaction } from 'sequelize';
+
+export type User = {
+  id: number;
   user: string;
   email: string;
   password: string;
   role: UserRoleId;
-  balance?: number;
-  created_at?: Date;
-}
+  balance: Decimal; 
+  created_at: Date;
+};
 
-  // Interfaz sin contraseña para la exposicion de usuarios
-  export type UserWithoutPassword = Omit<User, 'password'>;
+export type UserCreation = Omit<User, 'id' | 'created_at'>;
 
-
-// Interfaz para manejo de datos opcionales autogenerados por la DB solo en contexto de creacion de registros
-export type UserCreation = Omit<User, 'id' | 'created_at' | 'balance'>;
-
+export type UserWithoutPassword = Omit<User, 'password'>;
 
 export interface IUserRepository {
   createUser(userDTO: UserCreation): Promise<UserModel>;
   getAllUsersWithoutPassword(): Promise<UserWithoutPassword[]>;
   getUserWithoutPassword(id: number): Promise<UserWithoutPassword | null>;
+  getUserById(id: number): Promise<UserModel | null>;
+  getUserByEmail(email: string): Promise<UserModel | null>; 
   updateUser(id: number, updatedData: Partial<User>): Promise<UserModel | null>;
   deleteUser(id: number): Promise<boolean>;
+  updateUserBalance(id: number, newBalance: Decimal, t?: Transaction): Promise<void>;
 }
 
 export interface IUserService {
@@ -34,4 +35,3 @@ export interface IUserService {
   updateUser(id: number, updatedData: Partial<User>): Promise<UserModel | null>;
   deleteUser(id: number): Promise<boolean>;
 }
-

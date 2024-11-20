@@ -13,6 +13,7 @@ import {
 
 import { UserRoleId, UserRoles }   from '../roles/userRoleInterfacesTypes';
 import { User, UserCreation} from './userInterfacesTypes';
+import Decimal from 'decimal.js';
 
 
 
@@ -66,7 +67,7 @@ export class UserModel extends Model<User, UserCreation> implements User {
     type: DataType.DECIMAL(20, 2),
     allowNull: false,
   })
-  public balance!: number;
+  public balance!: Decimal;
 
   // Definimos el campo `created_at` con un valor predeterminado de la fecha actual
   @Default(DataType.NOW)
