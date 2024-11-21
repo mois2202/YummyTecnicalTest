@@ -1,41 +1,32 @@
-name: CI/CD Pipeline
+name: Build and Publish Docker Image
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build-and-push:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
-      # Configuración inicial del repositorio
-      - name: Check out code
-        uses: actions/checkout@v3
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
-      # Autenticación en GitHub Container Registry
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.YUMMY_TECNICAL_TEST_TOKEN}}
 
-      # Construir y levantar servicios con Docker Compose
-      - name: Build and Start Services with Docker Compose
-        run: docker-compose up --build
+      - name: Build Docker Image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/yummytecnicaltest:latest .
 
-      # Verificar que los servicios estén corriendo correctamente
-      - name: Verify Running Services
-        run: docker-compose ps
-
-      # Detener los servicios después de la verificación
-      - name: Stop Services
-        run: docker-compose down
-
-      # Publicar la imagen en GitHub Packages
       - name: Push Docker Image to GitHub Packages
         run: |
-          docker tag app_MobilityInc ghcr.io/${{ github.repository_owner }}/yummytecnicaltest:latest
           docker push ghcr.io/${{ github.repository_owner }}/yummytecnicaltest:latest
