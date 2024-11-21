@@ -1,12 +1,12 @@
-Guía de Instalación y Uso
+## Guía de Instalación y Uso
 
-Instalación de dependencias
+## Instalación de dependencias
 
 Ejecuta el siguiente comando para instalar las dependencias del proyecto:
 
-pnpm install
+npm install
 
-Configuración de variables de entorno
+## Configuración de variables de entorno
 
 Crea un archivo .env en la raíz del proyecto con el siguiente contenido:
 
@@ -22,19 +22,25 @@ PGADMIN\_EMAIL=admin@admin.com
 
 PGADMIN\_PASSWORD=admin
 
-Construcción y ejecución de servicios de Docker
+## Construcción y ejecución de servicios de Docker
 
 El proyecto puede ejecutarse completamente mediante Docker y Docker Compose. Para construir y ejecutar los servicios, utiliza el siguiente comando:
 
 docker-compose up --build
 
-*EN CASO DE QUE NO SE EJECUTE CORRECTAMENTE LA IMAGEN DE DOCKER O NO SEA VISIBLE LA DOCUMENTACION EN SWAGGER EJECUTAR PARA REALIZAR LAS PRUEBAS
 
-docker-compose up -d
+## Usar app en docker (http://localhost:3001)
+## Documentacion http://localhost:3001/docs
 
-npm run dev 
+## EN CASO DE QUE NO SE EJECUTE CORRECTAMENTE LA IMAGEN DE DOCKER O NO SEA VISIBLE LA DOCUMENTACION EN SWAGGER EJECUTAR PARA REALIZAR LAS PRUEBAS
+
+## docker-compose up -d
+
+## npm run dev 
 
 
+## Usar app desde la maquina (http://localhost:3000)
+## Documentacion http://localhost:3000/docs
 
 Servicios configurados en Docker:
 
@@ -48,11 +54,11 @@ Puertos de los servicios:
 - pgAdmin: 5050 (interfaz web accesible en http://localhost:5050)
 - Aplicación Node.js: 3000 (interfaz de la API accesible en http://localhost:3000)
 
-Acceso al usuario por defecto
+## Acceso al usuario por defecto
 
 El proyecto incluye un usuario por defecto con permisos de administrador para acceder a todos los endpoints y gestionar el sistema. \*\*Es obligatorio iniciar sesión con este usuario para poder acceder a todos los endpoints del proyecto.\*\*
 
-Credenciales del usuario por defecto:
+## Credenciales del usuario por defecto:
 
 - user: DefaultUser
 - email: tecnicaltest@yummy.com
@@ -64,7 +70,7 @@ Puedes usar estas credenciales para realizar autenticación en el endpoint `/pay
 
 Uso
 
-Endpoints principales
+## Endpoints principales
 
 Usuarios
 
