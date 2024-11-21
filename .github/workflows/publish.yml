@@ -24,7 +24,7 @@ jobs:
 
       # Construir y levantar servicios con Docker Compose
       - name: Build and Start Services with Docker Compose
-        run: docker-compose up -d --build
+        run: docker-compose up --build
 
       # Verificar que los servicios estén corriendo correctamente
       - name: Verify Running Services
