@@ -2,7 +2,7 @@
 FROM node:20-alpine AS builder
 
 # Establecer el directorio de trabajo dentro del contenedor
-WORKDIR /usr/src/
+WORKDIR /usr/src/app
 
 # Copiar los archivos package.json y package-lock.json
 COPY package.json ./
@@ -21,12 +21,12 @@ RUN npm run tsc
 FROM node:20-alpine
 
 # Establecer el directorio de trabajo
-WORKDIR /usr/src/
+WORKDIR /usr/src/app
 
 # Copiar solo lo necesario desde el builder
-COPY --from=builder /usr/src/dist ./dist
-COPY --from=builder /usr/src/package.json ./package.json
-COPY --from=builder /usr/src/node_modules ./node_modules
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/package.json ./package.json
+COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 # Definir la variable de entorno para producción
 ENV NODE_ENV production

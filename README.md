@@ -1,5 +1,3 @@
-\```txt
-
 Guía de Instalación y Uso
 
 Instalación de dependencias
@@ -36,8 +34,8 @@ Servicios configurados en Docker:
 1. pgAdmin: Interfaz gráfica para gestionar la base de datos PostgreSQL.
 1. Aplicación Node.js: Contenedor con el código fuente del proyecto.
 
-Puertos de los servicios:
 
+Puertos de los servicios:
 - PostgreSQL: 5433 (mapeado al puerto interno 5432)
 - pgAdmin: 5050 (interfaz web accesible en http://localhost:5050)
 - Aplicación Node.js: 3000 (interfaz de la API accesible en http://localhost:3000)
