@@ -28,6 +28,14 @@ El proyecto puede ejecutarse completamente mediante Docker y Docker Compose. Par
 
 docker-compose up --build
 
+*EN CASO DE QUE NO SE EJECUTE CORRECTAMENTE LA IMAGEN DE DOCKER O NO SEA VISIBLE LA DOCUMENTACION EN SWAGGER EJECUTAR PARA REALIZAR LAS PRUEBAS
+
+docker-compose up -d
+
+npm run dev 
+
+
+
 Servicios configurados en Docker:
 
 1. PostgreSQL: Base de datos para almacenar los datos de la aplicación.
