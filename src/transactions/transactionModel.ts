@@ -42,9 +42,9 @@ import {
     // Datos del pagador
     @ForeignKey(() => UserModel)
     @AllowNull(false)
-    @Column(DataType.BIGINT.UNSIGNED)
+    @Column(DataType.INTEGER)
     public payer_id!: number;
-  
+
     @AllowNull(false)
     @Column({
       type: DataType.STRING(100),
@@ -54,10 +54,11 @@ import {
     @BelongsTo(() => UserModel, 'payer_id')
     public payer!: UserModel;
   
-    // Datos del cobrador
+
+    // Datos del cobrador 
     @ForeignKey(() => UserModel)
     @AllowNull(false)
-    @Column(DataType.BIGINT.UNSIGNED)
+    @Column(DataType.INTEGER)
     public collector_id!: number;
   
     @AllowNull(false)

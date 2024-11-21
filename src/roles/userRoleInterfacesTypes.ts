@@ -9,6 +9,7 @@ export type UserRole = {
   export const UserRoles = {
     payer: 1,
     collector: 2,
+    admin: 3
   } as const;
   
   export type UserRoleId = typeof UserRoles[keyof typeof UserRoles];

@@ -1,5 +1,3 @@
-// userService.ts
-
 import { User, UserWithoutPassword, UserCreation, IUserRepository, IUserService } from './userInterfacesTypes';
 import UserModel from './userModel';
 import bcrypt from 'bcryptjs';
@@ -11,6 +9,18 @@ export default class UserService implements IUserService {
 
   constructor(userRepository: IUserRepository) {
     this.userRepository = userRepository;
+  }
+
+  public async authenticateUser(email: string, password: string): Promise<UserModel> {
+    const user = await this.userRepository.getUserByEmail(email);
+    if (!user) {
+      throw new Error('Credenciales inválidas');
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new Error('Credenciales inválidas');
+    }
+    return user;
   }
 
   public async createUser(userDTO: UserCreation): Promise<UserModel> {

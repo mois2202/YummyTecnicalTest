@@ -34,4 +34,5 @@ export interface IUserService {
   getUserWithoutPassword(id: number): Promise<UserWithoutPassword | null>;
   updateUser(id: number, updatedData: Partial<User>): Promise<UserModel | null>;
   deleteUser(id: number): Promise<boolean>;
+  authenticateUser(email: string, password: string): Promise<UserModel>;
 }

@@ -37,6 +37,7 @@ import {
       const initialRoles = [
         { role_name: 'payer', initial_balance: 1000.00 },
         { role_name: 'collector', initial_balance: 100.00 },
+        { role_name: 'admin', initial_balance: 0 }
       ];
       // Inserta roles iniciales, evitando duplicados
       for (const role of initialRoles) {
